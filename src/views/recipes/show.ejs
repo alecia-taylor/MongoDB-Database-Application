@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= recipe.name %></title>
+</head>
+<body>
+  <div class="container recipe-details">
+    <div class="card">
+      <h1 class="recipe-title"><%= recipe.name %></h1>
+      <span class="badge difficulty-<%= recipe.difficulty.toLowerCase() %>">
+        <%= recipe.difficulty %>
+      </span>
+
+      <section>
+        <h2>Ingredients</h2>
+        <ul class="list ingredients">
+          <% recipe.ingredients.forEach(i => { %>
+            <li><%= i %></li>
+          <% }); %>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Steps</h2>
+        <ol class="list steps">
+          <% recipe.steps.forEach(s => { %>
+            <li><%= s %></li>
+          <% }); %>
+        </ol>
+      </section>
+
+      <h2>Comments</h2>
+      <ul class="list comments">
+        <% comments.forEach(comment => { %>
+          <li><%= comment.content %> <small>(<%= new Date(comment.timestamp).toLocaleString() %>)</small></li>
+        <% }); %>
+      </ul>
+
+      <h2>Add a Comment</h2>
+      <form action="/recipes/<%= recipe.id %>/comments" method="POST">
+        <textarea name="content" placeholder="Write your comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+
+      <a href="/recipes" class="back-link">← Back to all recipes</a>
+    </div>
+
+  </div>
+</body>
+</html>

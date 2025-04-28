@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title>Recipes</title>
+</head>
+<body>
+  <div class="container">
+    <h1>All Recipes</h1>
+    <ul>
+      <% recipes.forEach(recipe => { %>
+        <li class="recipe-card">
+          <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/recipes/new" class="back-link">+ Add New Recipe</a>
+  </div>
+</body>
+
+</html>
